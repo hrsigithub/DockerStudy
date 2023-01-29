@@ -2,15 +2,14 @@ FROM ubuntu
 ARG _ARM_ARCH="arm-unknown-linux-gnu"
 USER root
 
-RUN apt-get update
 
 # ツール インスコ
-RUN apt-get install -y wget vim curl gawk make gcc git
-RUN apt-get install bzip2
+RUN apt-get update && apt-get install -y wget vim curl gawk make gcc git bzip2
 
 # Python インスコ
 RUN apt install -y python3.11 && apt install -y python3-pip
 
+# TA-Lib ビルド via Apple M1, M2
 RUN wget --quiet http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz -O ta-lib-0.4.0-src.tar.gz && \
     tar xvf ta-lib-0.4.0-src.tar.gz && \
     cd ta-lib/ && \
