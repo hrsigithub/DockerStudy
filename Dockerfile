@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 ubuntu:latest
-ARG _ARM_ARCH="arm-unknown-linux-gnu"
-ARG _ANACONDA_SHELL="Anaconda3-2022.10-Linux-aarch64.sh"
+# ARG _ARM_ARCH="arm-unknown-linux-gnu"
+# ARG _ANACONDA_SHELL="Anaconda3-2022.10-Linux-aarch64.sh"
 
 USER root
 
@@ -19,6 +19,8 @@ RUN wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh && 
 
 # 環境変数
 ENV PATH $PATH:/root/anaconda3/bin
+
+RUN pip install --upgrade pip
 
 # Python インスコ
 # RUN apt install -y python3.11 && apt install -y python3-pip
